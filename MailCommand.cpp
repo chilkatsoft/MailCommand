@@ -49,6 +49,8 @@
 
 	-auth "login"/"plain"/..
 
+	-rtm readTimeoutInSeconds
+	
   */
 
 int main(int argc, char* argv[])
@@ -161,6 +163,16 @@ int main(int argc, char* argv[])
 	    if (n == 1)
 		{
 		mailman.put_SmtpPort(port);
+		}
+	    i++;
+	    }
+	else if (strcmp(argv[i],"-rtm") == 0)
+	    {
+	    int readTimeout = 30;
+	    int n = sscanf(argv[i+1],"%d",&readTimeout);
+	    if (n == 1)
+		{
+		mailman.put_ReadTimeout(readTimeout);
 		}
 	    i++;
 	    }
